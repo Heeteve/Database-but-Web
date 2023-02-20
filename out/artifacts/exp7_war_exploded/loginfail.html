@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>学生管理系统 - 登录</title>
+    <link rel="stylesheet" href="styles/login_style.css">
+</head>
+
+<body>
+    <div class="login">
+        <h1>Login</h1>
+        <form action="doLogin" method="get" name="loginForm">
+            <input type="text" placeholder="用户名" name="username">
+            <input type="password" placeholder="密码"name="password">
+            <button type="submit">登录</button>
+        </form>
+        <h2>用户名或密码错误</h2>
+    </div>
+
+    <script>
+        let login = document.querySelector('.login');
+        let effect;
+
+        login.addEventListener('mouseenter', function (e) {
+            effect = document.createElement('span')
+            login.appendChild(effect);
+            effect.style.animation = 'mouse-in .5s ease-in-out forwards';
+            // 计算进入位置
+            let top = e.clientY - e.target.offsetTop;
+            let left = e.clientX - e.target.offsetLeft;
+            effect.style.top = top +'px';
+            effect.style.left = left +'px';
+        })
+
+        login.addEventListener('mouseleave', function (e) {
+            effect.style.animation = 'mouse-out .5s ease-in-out forwards';
+            // 计算离开位置
+            let top = e.clientY - e.target.offsetTop;
+            let left = e.clientX - e.target.offsetLeft;
+            effect.style.top = top +'px';
+            effect.style.left = left +'px';
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息管理系统</title>
+    <link rel="stylesheet" href="styles/home_style.css">
+</head>
+<body>
+<div class="header">
+    <div class="headerL">
+        <img src="images/logo.png" alt="logo" style="max-width: 100%; max-height: 100%;">
+        <h1>学生信息管理系统</h1>
+    </div>
+    <div class="headerR">
+        <button class="logoutButton" onclick="window.location.href='login.html'">退出登录</button>
+    </div>
+</div>
+
+<div class="main">
+
+        <table>
+            <tr>
+                <td class="bt">
+<!--                    <form action="getAllStu" method="get" name="studentForm">-->
+<!--                        <button class="mainButton" type="submit" name="student" value="student">学生</button>-->
+<!--                    </form>-->
+                    <button class="mainButton" onclick="window.location.href='http://localhost:8080/brand-case/student.html'">学生</button>
+                </td>
+                <td>
+                    <button class="mainButton" onclick="window.location.href='teacher.html'">教师</button>
+                </td>
+                <td>
+                    <button class="mainButton" onclick="window.location.href='class.html'">班级</button>
+                </td>
+            </tr>
+            <td>
+                <button class="mainButton" onclick="window.location.href='course.html'">课程</button>
+            </td>
+            <td>
+                <button class="mainButton" onclick="window.location.href='department.html'">学院</button>
+            </td>
+            <td>
+                <button class="mainButton" onclick="window.location.href='self.html'">个人</button>
+            </td>
+            </tr>
+        </table>
+
+
+</div>
+
+
+</body>
+
+
+</html>

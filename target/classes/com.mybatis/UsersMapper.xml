@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.user">
+    <!-- 查询操作 -->
+    <select id="FindAllUser" resultType="com.mybatis.pojo.Users">
+        select *
+        from login
+    </select>
+    <!--    根据id查询用户-->
+    <select id="findUsersById" parameterType="int" resultType="com.mybatis.pojo.Users">
+        select *
+        from login
+        where ID = #{id};
+    </select>
+    <!--    根据用户名模糊查询用户-->
+    <select id="findUsersLikeName" parameterType="String" resultType="com.mybatis.pojo.Users">
+        select *
+        from login
+        where username like '%${username}%';
+    </select>
+
+    <!--    添加用户-->
+
+</mapper>

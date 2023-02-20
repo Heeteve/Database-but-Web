@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="db.properties"></properties>
+
+    <settings>
+        <!-- 打开延迟加载 的开关 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 将积极加载改为消极加载即按需要加载 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 启动二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!--<typeAliases>-->
+    <!--    &lt;!&ndash; <typeAlias type="cn.demo.mybatis.pojo.User" alias="User"/> &ndash;&gt;-->
+    <!--    &lt;!&ndash; 批量定义别名, 别名就是类名,例如: User &ndash;&gt;-->
+    <!--    <package name="com.mybatis.pojo"/>-->
+    <!--</typeAliases>-->
+
+    <!--<plugins>-->
+    <!--    <plugin interceptor="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">-->
+    <!--        <property name="dialectClass" value="com.github.miemiedev.mybatis.paginator.dialect.OracleDialect"/>-->
+    <!--    </plugin>-->
+    <!--</plugins>-->
+
+    <!-- 和spring整合后 environments配置将废除 -->
+    <environments default="development">
+        <environment id="development">
+            <!-- 使用jdbc事务管理，事务控制由mybatis -->
+            <transactionManager type="JDBC"/>
+            <!-- 数据库连接池，由mybatis管理 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 注册 sql映射 -->
+    <mappers>
+        <!--<mapper resource="com.mybatis/UsersMapper.xml" />-->
+        <!--<mapper class="com.mybatis.mapper.UserMapper"/>-->
+        <!-- 就mapper代理的注册方式 : 指定mapper接口的路径 <mapper class="cn.demo.mybatis.mapper.UserMapper"/> -->
+        <!-- 批量注册， mapper代理的注册方式 -->
+        <package name="com.mybatis.mapper"/>
+    </mappers>
+
+</configuration>

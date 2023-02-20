@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.mapper.UsersMapper">
+    <!-- 查询操作 -->
+    <!--    查询所有用户-->
+    <select id="FindAllUsers" resultType="com.mybatis.pojo.Users">
+        SELECT *
+        FROM login
+    </select>
+    <!--    根据id查询用户-->
+    <select id="findUsersById" parameterType="int" resultType="com.mybatis.pojo.Users">
+        SELECT *
+        FROM login
+        WHERE id = #{id};
+    </select>
+    <!--    根据用户名模糊查询用户-->
+    <select id="findUsersLikeName" parameterType="String" resultType="com.mybatis.pojo.Users">
+        SELECT *
+        FROM login
+        WHERE username LIKE '%${username}%';
+    </select>
+
+    <!-- 修改操作 -->
+    <!--    修改用户密码-->
+    <update id="updateUsersByUsername" parameterType="com.mybatis.pojo.Users">
+        UPDATE login
+        SET password = #{password}
+        WHERE username = #{username};
+    </update>
+
+    <!-- 增加操作 -->
+    <!--    增加用户-->
+    <insert id="addUsers" parameterType="com.mybatis.pojo.Users">
+        INSERT INTO login (username, password, role)
+        VALUES (#{username}, #{password}, #{role});
+    </insert>
+
+    <!-- 删除操作 -->
+    <!--    根据用户名删除用户-->
+    <delete id="deleteUsersByUsername" parameterType="String">
+        DELETE FROM login
+        WHERE username = #{username};
+    </delete>
+
+    <!--    登录-->
+    <select id="login" parameterType="com.mybatis.pojo.Users" resultType="com.mybatis.pojo.Users">
+        SELECT *
+        FROM login
+        WHERE username = #{username} AND password = #{password};
+    </select>
+</mapper>
